@@ -83,8 +83,7 @@ def filter_order_search(qs, _, value):
     )
 
     if order_id := get_order_id_from_query(value):
-        order = Order.objects.filter(pk=order_id).values("id")
-        filter_option |= Q(Exists(order.filter(pk=OuterRef("id"))))
+        filter_option |= Q(pk=order_id)
 
     payments = Payment.objects.filter(psp_reference=value).values("id")
     filter_option |= Q(Exists(payments.filter(order_id=OuterRef("id"))))
