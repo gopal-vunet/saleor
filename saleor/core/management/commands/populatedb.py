@@ -104,7 +104,10 @@ class Command(BaseCommand):
             self.stdout.write(msg)
 
         if options["createsuperuser"]:
-            credentials = {"email": "admin@example.com", "password": "admin"}
+            credentials = {
+                "email": "admin@example.com",
+                "password": settings.POPULATE_SUPER_USER_PASSWORD,
+            }
             msg = create_superuser(credentials)
             self.stdout.write(msg)
             add_address_to_admin(credentials["email"])

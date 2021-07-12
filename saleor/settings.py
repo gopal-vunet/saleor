@@ -647,3 +647,16 @@ JWT_TTL_REQUEST_EMAIL_CHANGE = timedelta(
 
 assert hasattr(schema_printer, "_print_object")
 schema_printer._print_object = patched_print_object
+
+# Settings for populatedb command
+DEFAULT_USERS_PASSWORD = "password"
+
+POPULATE_SUPER_USER_PASSWORD = os.environ.get(
+    "POPULATE_SUPER_USER_PASSWORD", DEFAULT_USERS_PASSWORD
+)
+POPULATE_STAFF_USER_PASSWORD = os.environ.get(
+    "POPULATE_STAFF_USER_PASSWORD", DEFAULT_USERS_PASSWORD
+)
+POPULATE_USER_PASSWORD = os.environ.get(
+    "POPULATE_USER_PASSWORD", DEFAULT_USERS_PASSWORD
+)
